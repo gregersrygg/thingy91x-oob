@@ -12,6 +12,7 @@
 #include <net/nrf_cloud.h>
 #include <net/nrf_cloud_coap.h>
 #include <date_time.h>
+#include <app_version.h>
 
 #include "message_channel.h"
 
@@ -86,7 +87,7 @@ static void connect_work_fn(struct k_work *work)
 		SEND_FATAL_ERROR();
 	}
 
-	err = nrf_cloud_coap_connect(NULL);
+	err = nrf_cloud_coap_connect(APP_VERSION_STRING);
 	if (err)
 	{
 		LOG_ERR("nrf_cloud_coap_connect, error: %d", err);
